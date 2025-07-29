@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 
 abstract class Controller {
-    constructor(protected request: Request, protected response: Response, private viewPath?:string, private viewParams?: { [key: string]: any }) {
+    constructor(protected request: Request, protected response: Response) {
     }
 
     public respond(
     ) {
         console.log('empty response sent')
-        if (this.viewPath)  this.response.render(this.viewPath, this.viewParams)
+        this.response.send('empty response')
     }
 }
 

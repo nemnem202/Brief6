@@ -13,17 +13,17 @@ router.get("/", (request, response) => {
 
 router.get("/:categoryId/recipes", (request, response) => {
   console.log(`Page recette de la catégorie ${request.params.categoryId} requestuested by a user`);
-  new CategoryController(request, response, 'pages/category').respond();
+  new CategoryController(request, response).respond();
 });
 
 router.get("/recipes/:id", (request, response) => {
   console.log(`Page de la recette ${request.params.id} requestuested by a user`);
-  new RecipeFromIdController(request, response, 'pages/recipe', {id:request.params.id}).respond();
+  new RecipeFromIdController(request, response).respond();
 });
 
 router.get("/recipes/:recipeName", (request, response) => {
   console.log(`Page de la recette ${request.params.recipeName} requestuested by a user`);
-  new RecipeFromNameController(request, response, 'pages/recipe', {name:request.params.recipeName}).respond();
+  new RecipeFromNameController(request, response).respond();
 });
 
 export default router;
