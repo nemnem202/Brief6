@@ -1,31 +1,29 @@
 import { Router } from "express";
+import CategoryController from "../controllers/categoryController";
+import RecipeFromIdController from "../controllers/recipeFromNameController";
+import RecipeFromNameController from "../controllers/recipeFromNameController";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  const ip = req.ip;
-  console.log("Page d'accueil requested from: " + ip);
-  res.send("bienvenue sur mon site");
+router.get("/", (request, response) => {
+  const ip = request.ip;
+  console.log("Page d'accueil requestuested from: " + ip);
+  response.render('pages/home');
 });
 
-router.get("/categories", (req, res) => {
-  console.log("Page des catégories requested by a user");
-  res.send("Page des catégories");
+router.get("/:categoryId/recipes", (request, response) => {
+  console.log(`Page recette de la catégorie ${request.params.categoryId} requestuested by a user`);
+  new CategoryController(request, response, 'pages/category').respond();
 });
 
-router.get("/:categoryId/recipes", (req, res) => {
-  console.log(`Page recette de la catégorie ${req.params.categoryId} requested by a user`);
-  res.send("Page des recettes");
+router.get("/recipes/:id", (request, response) => {
+  console.log(`Page de la recette ${request.params.id} requestuested by a user`);
+  new RecipeFromIdController(request, response, 'pages/recipe', {id:request.params.id}).respond();
 });
 
-router.get("/recipes/:id", (req, res) => {
-  console.log(`Page de la recette ${req.params.id} requested by a user`);
-  res.send("Page de la recette");
-});
-
-router.get("/recipes/:recipeName", (req, res) => {
-  console.log(`Page de la recette ${req.params.recipeName} requested by a user`);
-  res.send("Page de la recette demandée");
+router.get("/recipes/:recipeName", (request, response) => {
+  console.log(`Page de la recette ${request.params.recipeName} requestuested by a user`);
+  new RecipeFromNameController(request, response, 'pages/recipe', {name:request.params.recipeName}).respond();
 });
 
 export default router;
