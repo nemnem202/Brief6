@@ -1,11 +1,18 @@
-import express from "express";
+import Express from "express";
+import path from "node:path";
+import router from "./routes/router";
 
-const app = express();
+const app = Express();
 const PORT = 3000;
 
-app.get("", (req, res) => {
-  res.send("coucou !");
-});
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(Express.json());
+
+app.use(Express.static(path.join(__dirname, "public")));
+
+app.use(router);
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur http://localhost:${PORT}`);
