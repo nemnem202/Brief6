@@ -10,7 +10,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(Express.json());
 
-app.use(Express.static(path.join(__dirname, "public")));
+app.use(Express.static(path.join(__dirname, "../public")));
 
 app.use(router);
 
