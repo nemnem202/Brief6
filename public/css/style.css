@@ -27,6 +27,12 @@ header .logo svg {
   height: 44px;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -181,6 +187,54 @@ section h1 {
 .cardContent span {
   font-size: 15px;
   font-family: "Playwrite US Modern", sans-serif;
+}
+
+.categoryTitle {
+  color: #585123;
+  font-size: 32px;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 40px;
+  width: 100%;
+  gap: 20px;
+}
+.categoryGrid .card {
+  width: 1fr;
+  height: 1fr;
+  max-height: 150px;
+}
+.categoryGrid .cardContent {
+  align-items: start;
+  padding: 20px 0px;
+  box-sizing: border-box;
+  top: 0%;
+}
+.categoryGrid .cardContent h1 {
+  font-size: 32px;
+}
+.categoryGrid .cardContent h3 {
+  margin: 0%;
+  margin-bottom: 10px;
+}
+.categoryGrid .cardContent span:not(.note) {
+  min-height: 100px;
+  margin-top: 20px;
+}
+.categoryGrid .cardContent > *:not(.note) {
+  margin: 0px 10px;
+  width: 70%;
+  text-align: left;
+}
+.categoryGrid .note {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: min-content;
+  height: min-content;
+  margin: 0%;
 }
 
 

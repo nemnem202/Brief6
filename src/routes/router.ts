@@ -4,7 +4,7 @@ import { RecipesController } from "../controllers/recipesController";
 const router = Router();
 
 router.get("/", (request, response) => {
-  response.render("pages/home");
+  response.render("pages/category", { category: "Entrées" });
 });
 
 router.get("/:categoryId/recipes", (request, response) => {
