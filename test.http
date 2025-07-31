@@ -6,8 +6,8 @@ GET http://localhost:3000/1/recipes
 
 
 ####
-GET http://localhost:3000/recipes/1
+GET http://localhost:3000/recipes/byId/102
 
 
 ####
-GET http://localhost:3000/recipes/soupe
+GET http://localhost:3000/recipes/byName/Bruschetta
