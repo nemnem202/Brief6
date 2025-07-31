@@ -5,7 +5,7 @@ import { GeneralController } from "../controllers/generalController";
 const router = Router();
 
 router.get("/", (request, response) => {
-  response.render("pages/category", { category: "Entrées" });
+  response.render("pages/home");
 });
 
 router.get("/:categoryId/recipes", (request, response) => {

@@ -226,7 +226,7 @@ section {
 .categoryGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 40px;
+  margin: 20px;
   width: 100%;
   gap: 20px;
 
@@ -234,6 +234,7 @@ section {
     width: 1fr;
     height: 1fr;
     max-height: 150px;
+    margin: 20px;
   }
 
   .cardContent {

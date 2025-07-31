@@ -5,119 +5,18 @@
 <main>
   <h1 class="categoryTitle"><%= category %></h1>
   <div class="categoryGrid">
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
+    <% recipes.forEach((recipe) => { %>
+      <div class="card">
+        <img src="/images/entre-card.png" alt="imgOfEntree" />
+        <div class="cardContent">
+          <h3><%= recipe.title %></h3>
+          <span><%= recipe.description %></span>
+          <span class="note">4.5</span>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
-    <div class="card">
-      <img src="/images/entre-card.png" alt="imgOfEntree" />
-      <div class="cardContent">
-        <h3>Bruschetta</h3>
-        <span>Une entrée Italienne classique</span>
-        <span class="note">4.5</span>
-      </div>
-    </div>
+    <% }); %>
   </div>
 </main>
+
 
 <%- include('../partials/footer') %>
