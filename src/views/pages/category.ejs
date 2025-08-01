@@ -3,11 +3,11 @@
 <%- include('../partials/header') %>
 
 <main>
-  <h1 class="categoryTitle"><%= category %></h1>
+  <h1 class="categoryTitle"><%= category.name %></h1>
   <div class="categoryGrid">
     <% recipes.forEach((recipe) => { %>
       <div class="card">
-        <img src="/images/entre-card.png" alt="imgOfEntree" />
+        <img src="/images/category-<%= category.id %>-card.png" alt="<%= category.name %>" />
         <div class="cardContent">
           <h3><%= recipe.title %></h3>
           <span><%= recipe.description %></span>

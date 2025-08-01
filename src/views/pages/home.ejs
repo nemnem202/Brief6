@@ -1,45 +1,33 @@
 <!-- prettier-ignore -->
-<%- include('../partials/head') %> 
-<%- include('../partials/header') %>
+<%- include('../partials/head') %>
+  <%- include('../partials/header') %>
 
-<main>
-  <div class="banner">
-    <img src="/images/home-banner.png" alt="home-banner" />
-    <h1>
-      Bienvenue sur Marmiplon,<br />le meilleur endroit pour trouver des recettes adaptées à tous
-      les goûts
-    </h1>
-  </div>
-  <section>
-    <h1 class="section-title">Que voulez-vous cuisiner ?</h1>
-    <div class="category-cards">
-      <div class="card">
-        <img src="/images/entre-card.png" alt="entrée" />
-        <div class="cardContent">
-          <h3>Entrées</h3>
-          <span>Des entrées délicieuses pour commencer le repas.</span>
-        </div>
+    <main>
+      <div class="banner">
+        <img src="/images/home-banner.png" alt="home-banner" />
+        <h1>
+          Bienvenue sur Marmiplon,<br />le meilleur endroit pour trouver des recettes adaptées à tous
+          les goûts
+        </h1>
       </div>
-
-      <div class="card">
-        <img src="/images/main-plate.png" alt="plat principal" />
-        <div class="cardContent">
-          <h3>Plats principaux</h3>
-          <span>Des plats principaux savoureux pour le cœur du repas.</span>
+      <section>
+        <h1 class="section-title">Que voulez-vous cuisiner ?</h1>
+        <div class="category-cards">
+          <% categoryList.forEach((category) => { %>
+          <a href="../<%= category.id %>/recipes">
+            <div class="card">
+              <img src="/images/category-<%= category.id %>-card.png" alt="<%= category.name %>" />
+              <div class="cardContent">
+                <h3><%= category.name %></h3>
+                <span><%= category.description %></span>
+              </div>
+            </div>
+          </a>
+          <% }) %>
         </div>
-      </div>
+        <!-- fermeture category-cards -->
+      </section>
+      <!-- fermeture section -->
+    </main>
 
-      <div class="card">
-        <img src="/images/dessert-card.png" alt="dessert" />
-        <div class="cardContent">
-          <h3>Desserts</h3>
-          <span>Des plats principaux savoureux pour le cœur du repas.</span>
-        </div>
-      </div>
-    </div>
-    <!-- fermeture category-cards -->
-  </section>
-  <!-- fermeture section -->
-</main>
-
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
