@@ -289,24 +289,24 @@ export const recipes: Recipe[] = [
   { id: 106, title: "Tzatziki", description: "Spécialité grecque à base de concombre et de yaourt." },
 
   // Plats principaux
-  { id: 201, title: "Pâtes Carbonara", description: "Un plat italien riche et crémeux." },
-  { id: 202, title: "Poulet Rôti", description: "Un poulet rôti aux herbes de Provence." },
-  { id: 203, title: "Lasagnes à la Bolognaise", description: "Le grand classique italien, généreux et familial." },
-  { id: 204, title: "Hachis Parmentier", description: "Un plat traditionnel français avec purée de pommes de terre et viande hachée." },
-  { id: 205, title: "Curry de Poulet au Lait de Coco", description: "Un plat exotique, doux et parfumé." },
-  { id: 206, title: "Risotto aux Champignons", description: "Un risotto crémeux et savoureux aux champignons de Paris." },
-  { id: 207, title: "Magret de Canard au Miel", description: "Une recette sucrée-salée élégante et rapide à préparer." },
-  { id: 208, title: "Quiche Lorraine", description: "Une tarte salée traditionnelle de la cuisine lorraine." },
+  { id: 201, title: "Pâtes carbonara", description: "Un plat italien riche et crémeux." },
+  { id: 202, title: "Poulet rôti", description: "Un poulet rôti aux herbes de Provence." },
+  { id: 203, title: "Lasagnes à la bolognaise", description: "Le grand classique italien, généreux et familial." },
+  { id: 204, title: "Hachis parmentier", description: "Un plat traditionnel français avec purée de pommes de terre et viande hachée." },
+  { id: 205, title: "Curry de poulet au lait de coco", description: "Un plat exotique, doux et parfumé." },
+  { id: 206, title: "Risotto aux champignons", description: "Un risotto crémeux et savoureux aux champignons de Paris." },
+  { id: 207, title: "Magret de canard au miel", description: "Une recette sucrée-salée élégante et rapide à préparer." },
+  { id: 208, title: "Quiche lorraine", description: "Une tarte salée traditionnelle de la cuisine lorraine." },
 
   // Desserts
   { id: 301, title: "Tiramisu", description: "Un dessert italien classique." },
-  { id: 302, title: "Tarte aux Pommes", description: "Une tarte sucrée à la cannelle." },
-  { id: 303, title: "Mousse au Chocolat", description: "Une mousse intense et aérienne pour les amateurs de chocolat." },
-  { id: 304, title: "Crème Brûlée", description: "Dessert onctueux avec une fine couche de caramel croquant." },
-  { id: 305, "title": "Gâteau au Yaourt", "description": "Le gâteau le plus simple et rapide à réaliser, parfait pour le goûter." },
-  { id: 306, "title": "Panna Cotta aux Fruits Rouges", "description": "Un dessert italien frais, léger et crémeux." },
-  { id: 307, "title": "Fondant au Chocolat", "description": "Un petit gâteau individuel au cœur coulant de chocolat." },
-  { id: 308, "title": "Tarte au Citron Meringuée", "description": "L'équilibre parfait entre l'acidité du citron et la douceur de la meringue." },
+  { id: 302, title: "Tarte aux pommes", description: "Une tarte sucrée à la cannelle." },
+  { id: 303, title: "Mousse au chocolat", description: "Une mousse intense et aérienne pour les amateurs de chocolat." },
+  { id: 304, title: "Crème brûlée", description: "Dessert onctueux avec une fine couche de caramel croquant." },
+  { id: 305, title: "Gâteau au yaourt", description: "Le gâteau le plus simple et rapide à réaliser, parfait pour le goûter." },
+  { id: 306, title: "Pannacotta aux fruits rouges", description: "Un dessert italien frais, léger et crémeux." },
+  { id: 307, title: "Fondant au chocolat", description: "Un petit gâteau individuel au cœur coulant de chocolat." },
+  { id: 308, title: "Tarte au citron meringuée", description: "L'équilibre parfait entre l'acidité du citron et la douceur de la meringue." },
 ];
 
 export const recipeComments: RecipeComment[] = [

@@ -1,22 +1,31 @@
 <!-- prettier-ignore -->
-<%- include('../partials/head') %> 
-<%- include('../partials/header') %>
+<%- include('../partials/head') %>
+  <%- include('../partials/header') %>
 
-<main>
-  <h1 class="categoryTitle"><%= category.name %></h1>
-  <div class="categoryGrid">
-    <% recipes.forEach((recipe) => { %>
-      <div class="card">
-        <img src="/images/category-<%= category.id %>-card.png" alt="<%= category.name %>" />
-        <div class="cardContent">
-          <h3><%= recipe.title %></h3>
-          <span><%= recipe.description %></span>
-          <span class="note">4.5</span>
-        </div>
+    <main>
+      <h1 class="categoryTitle">
+        <%= category.name %>
+      </h1>
+      <div class="categoryGrid">
+        <% for (let index=0; index < recipes.length; index++) { %>
+          <a href="../recipes/byId/<%= recipes[index].id %>">
+            <div class="card">
+              <img src="/images/recipe-<%= recipes[index].id %>.webp" alt="<%= recipes[index].title %>" />
+              <div class="cardContent">
+                <h3>
+                  <%= recipes[index].title %>
+                </h3>
+                <span>
+                  <%= recipes[index].description %>
+                </span>
+                <span class="note">
+                  <%= averageNotes[index] %>
+                </span>
+              </div>
+            </div>
+          </a>
+          <% }; %>
       </div>
-    <% }); %>
-  </div>
-</main>
+    </main>
 
-
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

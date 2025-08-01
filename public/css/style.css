@@ -103,8 +103,16 @@ footer .logo svg {
   height: 36.6666666667px;
 }
 
+.logo-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .footerContent {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
   color: #f58549;
   font-size: 2rem;
 }
@@ -117,6 +125,9 @@ footer .logo svg {
   color: #f2a65a;
   text-decoration: underline;
   cursor: pointer;
+}
+.footerContent .hidden {
+  display: none;
 }
 
 .banner {
@@ -139,7 +150,7 @@ footer .logo svg {
   align-items: center;
   text-align: center;
   font-weight: 100;
-  font-size: 40px;
+  font-size: 16px;
 }
 
 section {
@@ -155,14 +166,37 @@ section h1 {
   font-size: 40px;
   color: #585123;
   margin: 0%;
+  text-align: center;
 }
 
 .category-cards {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 40px;
 }
 
+.category-cards a,
+.categoryGrid a {
+  color: white;
+  text-decoration: none;
+}
+.category-cards a:visited,
+.categoryGrid a:visited {
+  color: white;
+}
+.category-cards a:hover, .category-cards a:focus,
+.categoryGrid a:hover,
+.categoryGrid a:focus {
+  color: #f2a65a;
+  text-decoration: underline;
+}
+
 .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 400px;
   border-radius: 20px;
@@ -182,7 +216,7 @@ section h1 {
   text-align: center;
 }
 .cardContent h3 {
-  font-size: 32px;
+  font-size: 24px;
 }
 .cardContent span {
   font-size: 15px;
@@ -191,15 +225,14 @@ section h1 {
 
 .categoryTitle {
   color: #585123;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: fit-content(40%);
   margin: 20px;
-  width: 100%;
-  gap: 20px;
+  gap: 10px;
 }
 .categoryGrid .card {
   width: 1fr;
@@ -209,12 +242,13 @@ section h1 {
 }
 .categoryGrid .cardContent {
   align-items: start;
-  padding: 20px 0px;
+  padding: 15px 0px;
   box-sizing: border-box;
   top: 0%;
+  background: rgba(0, 0, 0, 0.2);
 }
 .categoryGrid .cardContent h1 {
-  font-size: 32px;
+  font-size: 24px;
 }
 .categoryGrid .cardContent h3 {
   margin: 0%;
@@ -222,11 +256,11 @@ section h1 {
 }
 .categoryGrid .cardContent span:not(.note) {
   min-height: 100px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .categoryGrid .cardContent > *:not(.note) {
   margin: 0px 10px;
-  width: 70%;
+  width: 80%;
   text-align: left;
 }
 .categoryGrid .note {
@@ -238,6 +272,37 @@ section h1 {
   margin: 0%;
 }
 
+@media screen and (min-width: 700px) {
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1080px) {
+  .category-cards {
+    flex-direction: row;
+  }
+  .categoryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .banner h1 {
+    font-size: 24px;
+  }
+  .footerContent {
+    flex-direction: row;
+  }
+  .footerContent .hidden {
+    display: inline-block;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .categoryGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .banner h1 {
+    font-size: 40px;
+  }
+}
 
 
 /*# sourceMappingURL=style.css.map */

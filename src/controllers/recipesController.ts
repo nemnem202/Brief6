@@ -1,5 +1,5 @@
 import Controller from "../libs/Controller";
-import { Recipe, recipes, Category, categories } from "../database/db";
+import { Recipe, recipes, Category, categories, RecipeComment, recipeComments } from "../database/db";
 
 export class RecipesController extends Controller {
   public readCategory() {
@@ -15,7 +15,13 @@ export class RecipesController extends Controller {
     const categoryRecipes: Recipe[] = recipes.filter((recipe) => {
       return recipeRegex.test(recipe.id.toString());
     })
-    this.response.render("pages/category", { category: selectedCategory, recipes: categoryRecipes });
+    const recipeAverageNotes: number[] = categoryRecipes.map((recipe) => {
+      const comments: RecipeComment[] = recipeComments.filter((comment) => comment.recipeId === recipe.id && typeof comment.note === "number");
+      if (comments.length === 0) return 0;
+      const total = comments.reduce((sum, comment) => sum + (comment.note ?? 0), 0);
+      return Math.round((total / comments.length) * 10) / 10;
+    });
+    this.response.render("pages/category", { category: selectedCategory, recipes: categoryRecipes, averageNotes: recipeAverageNotes });
   }
 
   public readId() {
