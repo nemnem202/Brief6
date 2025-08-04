@@ -13,7 +13,10 @@ export class RecipesController extends Controller {
       return category.id === parseInt(selectedCategoryId);
     });
     if (selectedCategory === undefined) {
-      this.response.status(404).send("Catégorie non trouvée")
+      this.response.status(404).render("errors/404", {
+        title: "Catégorie introuvable",
+        description: "La catégorie recherchée n'existe pas."
+      })
       return;
     }
 
@@ -40,7 +43,10 @@ export class RecipesController extends Controller {
       return recipe.id === parseInt(requestedRecipeID);
     });
     if (requestedRecipe === undefined) {
-      this.response.status(404).send("Recette non trouvée")
+      this.response.status(404).render("errors/404", {
+        title: "Recette introuvable",
+        description: "La recette recherchée n'existe pas."
+      })
       return;
     }
 

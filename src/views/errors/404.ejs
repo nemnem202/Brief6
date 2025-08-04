@@ -1,7 +1,10 @@
-<%- include("../partials/header", { title: "404 - Not Found" }) %>
+<!-- prettier-ignore -->
+<%- include('../partials/head') %>
+<%- include("../partials/header", title) %>
 
 <main>
-  <h1>La ressource demandée n'existe pas</h1>
+  <h1 class="errorTitle"><%= description %></h1>
+  <img class="errorImage" src="/images/404.webp" alt="Image d’erreur 404">
 </main>
 
 <%- include("../partials/footer") %>

@@ -153,6 +153,17 @@ footer {
   }
 }
 
+.errorTitle {
+  font-size: $large-text-size;
+  color: $highlight;
+}
+
+.errorImage {
+  width: 450px;
+  height: auto;
+  margin: 2rem;
+}
+
 .banner {
   position: relative;
   display: flex;
@@ -363,6 +374,9 @@ section {
 .ingredientImage {
   width: 50px;
   height: auto;
+  box-shadow: 2px 2px 2px 2px $highlight;
+  margin: 0.3rem;
+  border-radius: 10px;
 }
 
 .recipeInstructions,
@@ -401,6 +415,29 @@ section {
   width: 250px;
   height: 200px;
   box-sizing: border-box;
+}
+
+.commentButtonContainer {
+  width: 100%;
+}
+
+.commentButton {
+  font-size: $medium-text-size;  
+  margin-left: 1rem;
+  color: $secondary;
+  font-weight: bold;
+  background-color: $on-surface;
+  border: 3px solid $secondary;
+  border-radius: 10px;
+}
+
+.commentButton:hover {  
+  background-color: $secondary;
+  color: $on-surface;
+}
+
+.commentButton:active {  
+  transform: scale(0.95);
 }
 
 .ingredientContainer {
@@ -467,6 +504,11 @@ section {
   .recipeIngredients {
     width: 50%;
   }
+
+  .recipeTitle {
+    padding-left: 1rem;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

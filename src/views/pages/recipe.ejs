@@ -38,6 +38,7 @@
           </ol>
         </div>
         <h2 class="commentTitle">Commentaires</h2>
+        <div class="commentButtonContainer"><button type="button" class="commentButton">Donner mon avis</button></div>
         <div class="recipeComments">
           <% for (let index=0; index < comments.length; index++) { %>
             <div class="commentContainer">
@@ -49,7 +50,6 @@
               <p class="userNote">Note : <%= comments[index].note %>/5</p>
             </div>
             <% } %>
-
         </div>
       </section>
     </main>
