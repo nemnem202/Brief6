@@ -1,5 +1,57 @@
+<!-- prettier-ignore -->
+<%- include('../partials/head') %>
+  <%- include('../partials/header') %>
 
-<main>
-  <h1>Recette</h1>
-</main>
+    <main>
+      <section class="recipeContainer">
+        <div class="recipeTopContainer">
+          <div>
+            <h1 class="recipeTitle">
+              <%= recipe.title %>
+            </h1>
+            <div class="recipeImage">
+              <img src="/images/recipe-<%= recipe.id %>.webp" alt="">
+            </div>
+          </div>
+          <div class="recipeIngredients">
+            <h2>Ingrédients</h2>
+            <% for (let index=0; index < ingredients.length; index++) { %>
+              <div class="ingredientContainer">
+                <img class="ingredientImage" src="/images/ingredient-<%= ingredients[index].id %>.webp"
+                  alt="Image de <%= ingredients[index].name %>">
+                <p>
+                  <%= ingredients[index].name %> : <%= ingredientDetails[index].quantity %>
+                      <%= ingredientDetails[index].unit %>
+                </p>
+              </div>
+              <% } %>
+          </div>
+        </div>
+        <div class="recipeInstructions">
+          <h2>Instructions</h2>
+          <ol>
+            <% for (let index=0; index < instructions.length; index++) { %>
+              <li>
+                <%= instructions[index].description %>
+              </li>
+              <% } %>
+          </ol>
+        </div>
+        <h2 class="commentTitle">Commentaires</h2>
+        <div class="recipeComments">
+          <% for (let index=0; index < comments.length; index++) { %>
+            <div class="commentContainer">
+              <p class="username">
+                <%= comments[index].username %>
+              </p>
+              <p class="userComment">« <%= comments[index].content %> »,
+                  <span class="commentDate">le <%= comments[index].createdAt.toLocaleDateString("fr") %></span></p>
+              <p class="userNote">Note : <%= comments[index].note %>/5</p>
+            </div>
+            <% } %>
 
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer') %>
