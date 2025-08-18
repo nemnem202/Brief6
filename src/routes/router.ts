@@ -14,12 +14,12 @@ router.get("/:categoryId/recipes", (request, response) => {
 
 router.get("/recipes/byId/:id", (request, response) => {
   console.log(`Page de la recette id ${request.params.id} requested by a user`);
-  new RecipesController(request, response).readId();
+  new RecipesController(request, response).readRecipe();
 });
 
 router.get("/recipes/byName/:recipeName", (request, response) => {
   console.log(`Page de la recette ${request.params.recipeName} requested by a user`);
-  new RecipesController(request, response).readName();
+  new RecipesController(request, response).browseRecipeByName();
 });
 
 export default router;

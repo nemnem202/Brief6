@@ -1,86 +1,105 @@
 import Controller from "../libs/Controller";
 import {
-  Recipe, recipes, Category, categories, Ingredient, ingredients,
-  RecipeIngredient, recipeIngredients, RecipeInstruction, recipeInstructions,
-  RecipeComment, recipeComments
+  recipes,
+  categories,
+  ingredients,
+  recipeIngredients,
+  recipeInstructions,
+  recipeComments,
 } from "../database/db";
+import {
+  Category,
+  Ingredient,
+  Recipe,
+  RecipeComment,
+  RecipeIngredient,
+  RecipeInstruction,
+} from "../database/types";
 
 export class RecipesController extends Controller {
   public readCategory() {
-    const selectedCategoryId: string = this.request.params.categoryId;
+    const id: number = parseInt(this.request.params.categoryId);
 
-    const selectedCategory: Category | undefined = categories.find((category) => {
-      return category.id === parseInt(selectedCategoryId);
-    });
+    const selectedCategory: Category | undefined = categories.find(
+      (category) => category.id === id
+    );
+
     if (selectedCategory === undefined) {
       this.response.status(404).render("errors/404", {
         title: "Catégorie introuvable",
-        description: "La catégorie recherchée n'existe pas."
-      })
+        description: "La catégorie recherchée n'existe pas.",
+      });
       return;
     }
 
-    const recipeRegex: RegExp = new RegExp(`^${selectedCategoryId}`);
+    const categoryRecipes = recipes.filter((r) => String(r.id)[0] === String(id));
 
-    const categoryRecipes: Recipe[] = recipes.filter((recipe) => {
-      return recipeRegex.test(recipe.id.toString());
-    })
+    const averageNotesArray = this.calculateAverageNoteForAll(categoryRecipes);
 
-    const recipeAverageNotes: number[] = categoryRecipes.map((recipe) => {
-      const comments: RecipeComment[] = recipeComments.filter((comment) => comment.recipeId === recipe.id && typeof comment.note === "number");
+    this.response.render("pages/category", {
+      category: selectedCategory,
+      recipes: categoryRecipes,
+      averageNotes: averageNotesArray,
+    });
+  }
+
+  private calculateAverageNoteForAll(categoryRecipes: Recipe[]): number[] {
+    const averageNotesArray: number[] = categoryRecipes.map((recipe) => {
+      const comments: RecipeComment[] = recipeComments.filter(
+        (comment) => comment.note && comment.recipeId === recipe.id
+      );
       if (comments.length === 0) return 0;
       const total = comments.reduce((sum, comment) => sum + (comment.note ?? 0), 0);
       return Math.round((total / comments.length) * 10) / 10;
     });
 
-    this.response.render("pages/category", { category: selectedCategory, recipes: categoryRecipes, averageNotes: recipeAverageNotes });
+    return averageNotesArray;
   }
 
-  public readId() {
-    const requestedRecipeID: string = this.request.params.id;
+  public readRecipe() {
+    const id: number = parseInt(this.request.params.id);
 
     const requestedRecipe: Recipe | undefined = recipes.find((recipe) => {
-      return recipe.id === parseInt(requestedRecipeID);
+      return recipe.id === id;
     });
     if (requestedRecipe === undefined) {
       this.response.status(404).render("errors/404", {
         title: "Recette introuvable",
-        description: "La recette recherchée n'existe pas."
-      })
+        description: "La recette recherchée n'existe pas.",
+      });
       return;
     }
 
-    const requestedRecipeIngredientDetails: RecipeIngredient[] = recipeIngredients.filter((ingredient) => {
-      return ingredient.recipeId == parseInt(requestedRecipeID);
-    })
-
-    const requestedRecipeIngredientList: Ingredient[] = [];
-    requestedRecipeIngredientDetails.forEach(detail => {
-      const currentIngredient = ingredients.find(currentIngredient => currentIngredient.id === detail.ingredientId);
-      if (currentIngredient) {
-        requestedRecipeIngredientList.push(currentIngredient);
+    const requestedRecipeIngredientDetails: RecipeIngredient[] = recipeIngredients.filter(
+      (ingredient) => {
+        return ingredient.recipeId == id;
       }
-    });
+    );
 
-    const requestedRecipeInsdtructions: RecipeInstruction[] = recipeInstructions.filter((instruction) => {
-      return instruction.recipeId === parseInt(requestedRecipeID);
-    })
+    const requestedRecipeIngredientList: Ingredient[] = requestedRecipeIngredientDetails
+      .map((detail) =>
+        ingredients.find((currentIngredient) => currentIngredient.id === detail.ingredientId)
+      )
+      .filter((ingredient) => !!ingredient);
 
-    const requestedRecipeComments: RecipeComment[] = recipeComments.filter((comment) => {
-      return comment.recipeId == parseInt(requestedRecipeID);
-    })
+    const requestedRecipeInsdtructions: RecipeInstruction[] = recipeInstructions.filter(
+      (instruction) => instruction.recipeId === id
+    );
+
+    const requestedRecipeComments: RecipeComment[] = recipeComments.filter(
+      (comment) => comment.recipeId == id
+    );
 
     this.response.render("pages/recipe", {
       recipe: requestedRecipe,
       ingredients: requestedRecipeIngredientList,
       ingredientDetails: requestedRecipeIngredientDetails,
       instructions: requestedRecipeInsdtructions,
-      comments: requestedRecipeComments
+      comments: requestedRecipeComments,
     });
   }
 
-
-  public readName() {
+  public browseRecipeByName() {
     const requestedRecipeName = this.request.params.recipeName;
     const recipeList = recipes.filter((recipe) => {
       return recipe;
