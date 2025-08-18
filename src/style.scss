@@ -277,7 +277,6 @@ section {
     width: 1fr;
     height: 1fr;
     max-height: 150px;
-    margin: 20px;
   }
 
   .cardContent {
@@ -302,7 +301,7 @@ section {
     }
   }
 
-  .cardContent>*:not(.note) {
+  .cardContent > *:not(.note) {
     margin: 0px 10px;
     width: 80%;
     text-align: left;
@@ -335,6 +334,7 @@ section {
   background-color: $background;
   width: 100%;
   max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .recipeImage {
@@ -364,7 +364,6 @@ section {
   }
 }
 
-
 .commentTitle {
   font-size: $medium-text-size;
   color: $highlight;
@@ -374,7 +373,7 @@ section {
 .ingredientImage {
   width: 50px;
   height: auto;
-  box-shadow: 2px 2px 2px 2px $highlight;
+  box-shadow: 1px 1px 2px 1px rgba($highlight, 0.2);
   margin: 0.3rem;
   border-radius: 10px;
 }
@@ -422,7 +421,7 @@ section {
 }
 
 .commentButton {
-  font-size: $medium-text-size;  
+  font-size: $medium-text-size;
   margin-left: 1rem;
   color: $secondary;
   font-weight: bold;
@@ -431,12 +430,12 @@ section {
   border-radius: 10px;
 }
 
-.commentButton:hover {  
+.commentButton:hover {
   background-color: $secondary;
   color: $on-surface;
 }
 
-.commentButton:active {  
+.commentButton:active {
   transform: scale(0.95);
 }
 
@@ -508,7 +507,6 @@ section {
   .recipeTitle {
     padding-left: 1rem;
   }
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
