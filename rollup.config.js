@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   // Configuration de Rollup
-  input: "src/ts/index.ts",
+  input: "src/scripts/commentForm.ts",
   output: [
     {
       dir: "public/js",

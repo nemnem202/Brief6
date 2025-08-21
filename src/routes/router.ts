@@ -13,8 +13,13 @@ router.get("/:categoryId/recipes", (request, response) => {
 });
 
 router.get("/recipes/byId/:id", (request, response) => {
-  console.log(`Page de la recette id ${request.params.id} requested by a user`);
+  console.log(`Page for recipe with id ${request.params.id} requested by a user`);
   new RecipesController(request, response).readRecipe();
+});
+
+router.post("/recipes/byId/:id", (request, response) => {
+  console.log(`Comment for recipe with id ${request.params.id} added by a user`);
+  new RecipesController(request, response).addComment();
 });
 
 router.get("/recipes/byName/:recipeName", (request, response) => {
