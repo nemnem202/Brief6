@@ -1,0 +1,126 @@
+.recipeTitle {
+  font-size: $large-text-size;
+  color: $highlight;
+  text-align: center;
+}
+
+.recipeContainer,
+.recipeTopContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: $spacing-medium;
+  gap: $spacing-small;
+  background-color: $background;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.recipeImage {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: $spacing-small;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: $border-radius-small;
+    border: $border-highlight;
+  }
+}
+
+.recipeIngredients,
+.recipeInstructions {
+  display: block;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background-color: $on-surface;
+  border: $border-highlight;
+  color: $highlight;
+  font-size: $small-text-size;
+  border-radius: $border-radius-small;
+  margin: $spacing-small;
+  width: 98%;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: $medium-text-size;
+    color: $highlight;
+    font-variant: small-caps;
+  }
+
+  ol {
+    font-size: $medium-text-size;
+  }
+
+  li {
+    padding-bottom: 0.5rem;
+  }
+}
+
+.commentTitle {
+  font-size: $medium-text-size;
+  color: $highlight;
+  font-variant: small-caps;
+}
+
+.ingredientImage {
+  width: 50px;
+  height: auto;
+  box-shadow: 1px 1px 2px 1px rgba($highlight, 0.2);
+  margin: 0.3rem;
+  border-radius: $border-radius-small;
+}
+
+.commentContainer {
+  display: block;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background-color: $on-surface;
+  border: $border-highlight;
+  color: $highlight;
+  font-size: $small-text-size;
+  border-radius: $border-radius-small;
+  margin: $spacing-small;
+  width: 250px;
+  height: 200px;
+  box-sizing: border-box;
+}
+
+.ingredientContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: $spacing-small;
+  width: 300px;
+}
+
+.recipeComments {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.username {
+  font-weight: bold;
+  margin-bottom: $spacing-small;
+}
+
+.userComment {
+  font-style: italic;
+}
+
+.userNote {
+  font-family: $font-family-special;
+}

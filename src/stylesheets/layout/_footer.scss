@@ -1,0 +1,41 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-medium;
+  background-color: $on-surface;
+  padding: $spacing-medium;
+
+  .logo {
+    font-size: 2.5rem;
+
+    svg {
+      width: calc(250 / 300 * 46px);
+      height: calc(250 / 300 * 44px);
+    }
+  }
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  color: $primary;
+  font-size: $medium-text-size;
+
+  a {
+    color: $primary;
+    text-decoration: none;
+    margin: 0 0.5rem;
+
+    &:hover {
+      color: $secondary;
+      text-decoration: underline;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}

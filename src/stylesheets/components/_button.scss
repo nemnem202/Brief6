@@ -1,0 +1,47 @@
+.commentButtonContainer {
+  width: 100%;
+}
+
+.commentButton {
+  font-size: $medium-text-size;
+  margin-left: $spacing-small;
+  color: $secondary;
+  font-weight: bold;
+  background-color: $on-surface;
+  border: 3px solid $secondary;
+  border-radius: $border-radius-small;
+
+  &:hover {
+    background-color: $secondary;
+    color: $on-surface;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-button {
+  font-size: $small-text-size;
+  color: $secondary;
+  font-weight: bold;
+  background-color: $on-surface;
+  border: 3px solid $secondary;
+  border-radius: $border-radius-small;
+  width: 100px;
+  height: auto;
+
+  &:hover {
+    background-color: $secondary;
+    color: $on-surface;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

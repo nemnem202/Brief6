@@ -1,0 +1,53 @@
+.categoryTitle {
+  color: $highlight;
+  font-size: $medium-text-size;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: fit-content(50%);
+  margin: $spacing-medium;
+  gap: $spacing-small;
+
+  .card {
+    width: 1fr;
+    height: 1fr;
+    max-height: 150px;
+  }
+
+  .cardContent {
+    align-items: start;
+    padding: 15px 0px;
+    box-sizing: border-box;
+    top: 0;
+    background: rgba(0, 0, 0, 0.2);
+
+    h1 {
+      font-size: $medium-text-size;
+    }
+
+    h3 {
+      margin: 0 0 $spacing-small;
+    }
+
+    span:not(.note) {
+      min-height: 100px;
+      margin-top: 15px;
+    }
+
+    > *:not(.note) {
+      margin: 0 $spacing-small;
+      width: 80%;
+      text-align: left;
+    }
+  }
+
+  .note {
+    position: absolute;
+    right: $spacing-small;
+    bottom: $spacing-small;
+    width: min-content;
+    height: min-content;
+    margin: 0;
+  }
+}

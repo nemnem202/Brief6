@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: $font-family-special;
+  font-size: 100%;
+  line-height: 1;
+  padding-top: $spacing-small;
+  font-weight: 500;
+  color: $primary;
+  margin: 0;
+}
+
+.logo-link {
+  text-decoration: none;
+  cursor: pointer;
+}

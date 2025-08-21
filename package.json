@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:css\" \"npm run dev:js\"",
     "dev:server": "tsx watch src/app.ts",
-    "dev:css": "sass --watch src/style.scss:public/css/style.css",
+    "dev:css": "sass --watch src/stylesheets/style.scss:public/css/style.css",
     "dev:js": "rollup -c -w",
     "build": "npm run build:js && npm run build:css",
     "build:js": "rollup -c",

@@ -1,0 +1,81 @@
+@import "abstracts/_variables.scss";
+@import "base/_base.scss";
+@import "base/_typography.scss";
+@import "components/_button.scss";
+@import "components/_card.scss";
+@import "components/_form.scss";
+@import "components/_logo.scss";
+@import "components/_navBar.scss";
+@import "layout/_footer.scss";
+@import "layout/_grid.scss";
+@import "layout/_header.scss";
+@import "layout/_section.scss";
+@import "pages/_category.scss";
+@import "pages/_error.scss";
+@import "pages/_home.scss";
+@import "pages/_recipe.scss";
+
+//== Media Queries
+@media only screen and (min-width: $breakpoint-sm) {
+  .banner h1 {
+    font-size: $medium-text-size;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: $breakpoint-md) {
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recipeComments {
+    flex-direction: row;
+  }
+
+  .recipeTopContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .recipeIngredients {
+    width: 50%;
+  }
+
+  .recipeTitle {
+    padding-left: $spacing-small;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: $breakpoint-lg) {
+  .category-cards {
+    flex-direction: row;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-medium;
+  }
+
+  .banner h1 {
+    font-size: $large-text-size;
+  }
+
+  .footerContent {
+    flex-direction: row;
+
+    .hidden {
+      display: inline-block;
+    }
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: $breakpoint-xl) {
+  .categoryGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

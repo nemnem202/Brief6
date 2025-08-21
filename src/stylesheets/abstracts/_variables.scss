@@ -1,0 +1,35 @@
+//## Couleurs
+$primary: #f58549;
+$secondary: #f2a65a;
+$highlight: #585123;
+$background: #f0e4bf;
+$on-surface: white;
+$secondaryOpacity: rgba(242, 166, 90, 0.1);
+$tertiary: #fee7db;
+
+//## Typographie
+
+$font-family-sans-serif: "Open-sans", sans-serif;
+$font-family-special: "Playwrite US Modern", sans-serif;
+$large-text-size: 4rem;
+$medium-text-size: 2.4rem;
+$small-text-size: 1.6rem;
+
+//## Espacements
+$spacing-small: 1rem;
+$spacing-medium: 2rem;
+$spacing-large: 4rem;
+$spacing-xlarge: 6rem;
+
+//## Bordures
+$border-radius-small: 10px;
+$border-radius-medium: 20px;
+$border-radius-large: 25px;
+$border-primary: 2px solid $primary;
+$border-highlight: 2px solid $highlight;
+
+//## Points de rupture
+$breakpoint-sm: 600px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1400px;

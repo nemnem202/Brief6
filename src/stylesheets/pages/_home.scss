@@ -1,0 +1,24 @@
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 100;
+    font-size: $small-text-size;
+  }
+}
