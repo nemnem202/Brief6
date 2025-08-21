@@ -48,20 +48,41 @@ main {
   margin: 0%;
 }
 
-.navBar {
+.navBar-container {
   position: relative;
   width: 250px;
   height: 40px;
+}
+
+.navBar {
+  position: absolute;
+  width: 250px;
+  border: 2px solid #f58549;
+  border-radius: 25px;
+  overflow: hidden;
+  z-index: 30;
   /* Compatibilité pour Firefox */
 }
 .navBar input {
   width: 100%;
-  height: 100%;
+  height: 40px;
   padding-left: 15px;
-  border: 2px solid #f58549;
-  border-radius: 60px;
   font-size: 1.5rem;
   color: #f58549;
+  border: none;
+}
+.navBar .menuEl {
+  background-color: white;
+  color: #f58549;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  cursor: pointer;
+}
+.navBar .menuEl:hover {
+  background-color: #fee7db;
 }
 .navBar input:focus {
   border-color: #f58549;
@@ -80,7 +101,7 @@ main {
 .navBar svg {
   position: absolute;
   right: 15px;
-  top: 50%;
+  top: 20px;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;

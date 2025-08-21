@@ -5,11 +5,15 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   // Configuration de Rollup
-  input: "src/scripts/commentForm.ts",
+  input: {
+    app: "src/app.ts",
+    commentForm: "src/scripts/commentForm.ts",
+    navBar: "src/scripts/navBar.ts",
+  },
   output: [
     {
       dir: "public/js",
-      format: "umd",
+      format: "esm",
       sourcemap: !isProduction,
     },
   ],
@@ -20,8 +24,6 @@ export default {
     }),
     isProduction &&
       terser({
-        // À vous de le configurer pour supprimer les console
-        // (console.log)
         compress: { drop_console: true },
       }),
   ],

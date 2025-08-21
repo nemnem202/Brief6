@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/app.ts",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:css\" \"npm run dev:js\"",
+    "dev:server": "tsx watch src/app.ts",
     "dev:css": "sass --watch src/style.scss:public/css/style.css",
-    "dev:server": "tsx watch src/app.ts src/scripts/commentForm.ts",
+    "dev:js": "rollup -c -w",
+    "build": "npm run build:js && npm run build:css",
     "build:js": "rollup -c",
-    "build:css": "sass src/style.scss public/css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "sass src/style.scss public/css/style.css"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3"
+    "@types/express": "^5.0.3",
+    "concurrently": "^9.2.0"
   }
 }
