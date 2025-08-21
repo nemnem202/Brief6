@@ -2,7 +2,7 @@ import Express from "express";
 import path from "node:path";
 import router from "./routes/router";
 
-const app = Express();
+const app = Express()
 const PORT = 3000;
 
 app.set("view engine", "ejs");

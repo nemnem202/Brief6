@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsx src/app.ts",
     "dev:css": "sass --watch src/style.scss:public/css/style.css",
-    "dev:server": "tsx watch src/app.ts",
+    "dev:server": "tsx watch src/app.ts src/scripts/commentForm.ts",
     "build:js": "rollup -c",
     "build:css": "sass src/style.scss public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"

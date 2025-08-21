@@ -430,12 +430,12 @@ section {
   border-radius: 10px;
 }
 
-.commentButton:hover {
+.commentButton:hover, .form-button:hover {
   background-color: $secondary;
   color: $on-surface;
 }
 
-.commentButton:active {
+.commentButton:active, .form-button:active {
   transform: scale(0.95);
 }
 
@@ -473,6 +473,61 @@ section {
 
 .userNote {
   font-family: "Playwrite US Modern", sans-serif;
+}
+
+.form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-form {
+    display: block;
+    width: 50%;
+    height: auto;
+    background-color: $background;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-label {
+    font-size: 1.5rem;
+    color: $primary;
+    text-align: left;
+}
+
+.form-input {
+    font-size: 1rem;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-button {
+  font-size: $small-text-size;
+  margin-left: 1rem;
+  color: $secondary;
+  font-weight: bold;
+  background-color: $on-surface;
+  border: 3px solid $secondary;
+  border-radius: 10px;
+  width: 100px;
+  height: auto;
 }
 
 @media only screen and (min-width: 600px) {

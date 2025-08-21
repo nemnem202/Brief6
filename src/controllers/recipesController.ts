@@ -99,6 +99,10 @@ export class RecipesController extends Controller {
     });
   }
 
+  public addComment() {
+    const commentedRecipeName = this.request.params.recipeName;
+  }
+
   public browseRecipeByName() {
     const requestedRecipeName = this.request.params.recipeName;
     const recipeList = recipes.filter((recipe) => {
