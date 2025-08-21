@@ -100,10 +100,33 @@ export class RecipesController extends Controller {
   }
 
   public browseRecipeByName() {
-    const requestedRecipeName = this.request.params.recipeName;
-    const recipeList = recipes.filter((recipe) => {
-      return recipe;
-    });
-    this.response.render("pages/category", { recipeList });
+    const input = this.request.params.recipeName;
+
+    const splittedInput = decodeURIComponent(input).split(" ");
+
+    const validRecipes = recipes
+      .filter((r) =>
+        splittedInput.some((i) => r.title.toLowerCase().includes(i.toLowerCase()) && i.length > 3)
+      )
+      .sort((a, b) => {
+        // score maximum de lettres communes entre titre et n'importe quel mot saisi
+        const scoreA = Math.max(...splittedInput.map((i) => this.commonLettersCount(a.title, i)));
+        const scoreB = Math.max(...splittedInput.map((i) => this.commonLettersCount(b.title, i)));
+        return scoreB - scoreA; // tri décroissant
+      });
+
+    this.response.send(validRecipes);
+  }
+
+  private commonLettersCount(str1: string, str2: string): number {
+    const a = str1.toLowerCase();
+    const b = str2.toLowerCase();
+    let count = 0;
+    for (const char of a) {
+      if (b.includes(char)) {
+        count++;
+      }
+    }
+    return count;
   }
 }

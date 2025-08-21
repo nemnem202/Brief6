@@ -11,6 +11,7 @@ $highlight: #585123;
 $background: #f0e4bf;
 $on-surface: white;
 $secondaryOpacity: rgba(242, 166, 90, 0.1);
+$tertiary: #fee7db;
 
 body {
   background-color: $background;
@@ -60,19 +61,42 @@ main {
   margin: 0%;
 }
 
-.navBar {
+.navBar-container {
   position: relative;
-  width: 250px; // ou ce que tu veux
+  width: 250px;
   height: 40px;
+}
+
+.navBar {
+  position: absolute;
+  width: 250px; // ou ce que tu veux
+  border: 2px solid $primary;
+  border-radius: 25px;
+  overflow: hidden;
+  z-index: 30;
 
   input {
     width: 100%;
-    height: 100%;
+    height: 40px;
     padding-left: 15px;
-    border: 2px solid $primary;
-    border-radius: 60px;
     font-size: 1.5rem;
     color: $primary;
+    border: none;
+  }
+
+  .menuEl {
+    background-color: $on-surface;
+    color: $primary;
+    height: 40px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    cursor: pointer;
+  }
+
+  .menuEl:hover {
+    background-color: $tertiary;
   }
 
   input:focus {
@@ -96,7 +120,7 @@ main {
   svg {
     position: absolute;
     right: 15px;
-    top: 50%;
+    top: 20px;
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
