@@ -15,6 +15,7 @@ import {
   RecipeIngredient,
   RecipeInstruction,
 } from "../database/types";
+import { timeStamp } from "node:console";
 
 export class RecipesController extends Controller {
   public readCategory() {
@@ -100,7 +101,16 @@ export class RecipesController extends Controller {
   }
 
   public addComment() {
-    const commentedRecipeName = this.request.params.recipeName;
+    const comment: RecipeComment = {
+      id: recipeComments.length + 1,
+      username: this.request.body.user,
+      content: this.request.body.message,
+      note: this.request.body.note,
+      createdAt: new Date(),
+      recipeId: this.request.body.id,
+    }
+    recipeComments.push(comment);
+    this.response.status(200).json(comment);
   }
 
   public browseRecipeByName() {
