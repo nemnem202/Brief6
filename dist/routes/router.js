@@ -15,7 +15,8 @@ router.get("/recipes/byId/:id", (request, response) => {
     new recipesController_1.RecipesController(request, response).readRecipe();
 });
 router.post("/recipes/byId/:id", (request, response) => {
-    console.log(`Comment for recipe with id ${request.params.id} added by a user`);
+    console.log(`Comment for recipe with id ${request.body.id} added by ${request.body.user}. 
+    Note : ${request.body.note}. Commentaire : ${request.body.message}`);
     new recipesController_1.RecipesController(request, response).addComment();
 });
 router.get("/recipes/byName/:recipeName", (request, response) => {

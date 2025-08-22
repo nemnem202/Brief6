@@ -64,7 +64,16 @@ class RecipesController extends Controller_1.default {
         });
     }
     addComment() {
-        const commentedRecipeName = this.request.params.recipeName;
+        const comment = {
+            id: db_1.recipeComments.length + 1,
+            username: this.request.body.user,
+            content: this.request.body.message,
+            note: this.request.body.note,
+            createdAt: new Date(),
+            recipeId: this.request.body.id,
+        };
+        db_1.recipeComments.push(comment);
+        this.response.status(200).json(comment);
     }
     browseRecipeByName() {
         const input = this.request.params.recipeName;
