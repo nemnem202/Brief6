@@ -2377,7 +2377,16 @@ class RecipesController extends Controller {
         });
     }
     addComment() {
-        this.request.params.recipeName;
+        const comment = {
+            id: recipeComments.length + 1,
+            username: this.request.body.user,
+            content: this.request.body.message,
+            note: this.request.body.note,
+            createdAt: new Date(),
+            recipeId: this.request.body.id,
+        };
+        recipeComments.push(comment);
+        this.response.status(200).json(comment);
     }
     browseRecipeByName() {
         const input = this.request.params.recipeName;
@@ -2423,7 +2432,8 @@ router.get("/recipes/byId/:id", (request, response) => {
     new RecipesController(request, response).readRecipe();
 });
 router.post("/recipes/byId/:id", (request, response) => {
-    console.log(`Comment for recipe with id ${request.params.id} added by a user`);
+    console.log(`Comment for recipe with id ${request.body.id} added by ${request.body.user}. 
+    Note : ${request.body.note}. Commentaire : ${request.body.message}`);
     new RecipesController(request, response).addComment();
 });
 router.get("/recipes/byName/:recipeName", (request, response) => {
