@@ -2435,7 +2435,7 @@ const app = Express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(Express.json());
-app.use(Express.static(path.join(__dirname, "../public")));
+app.use(Express.static(path.join(__dirname, "public")));
 app.use(router);
 
 export { app as default };

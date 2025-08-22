@@ -9,7 +9,7 @@ const PORT = 3000;
 app.set("view engine", "ejs");
 app.set("views", node_path_1.default.join(__dirname, "views"));
 app.use(express_1.default.json());
-app.use(express_1.default.static(node_path_1.default.join(__dirname, "../public")));
+app.use(express_1.default.static(node_path_1.default.join(__dirname, "public")));
 app.use(router_1.default);
 // app.listen(PORT, () => {
 //   console.log(`Serveur démarré sur http://localhost:${PORT}`);
