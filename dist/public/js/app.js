@@ -2433,9 +2433,9 @@ router.get("/recipes/byName/:recipeName", (request, response) => {
 
 const app = Express();
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 app.use(Express.json());
-app.use(Express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "../src/views")); // si tu builds en TypeScript
+app.use(Express.static(path.join(__dirname, "../public")));
 app.use(router);
 
 export { app as default };
