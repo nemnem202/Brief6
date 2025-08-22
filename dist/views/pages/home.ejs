@@ -1,0 +1,31 @@
+<!-- prettier-ignore -->
+<%- include('../partials/head') %>
+  <%- include('../partials/header') %>
+
+    <main>
+      <div class="banner">
+        <img src="/images/home-banner.png" alt="home-banner" />
+        <h1>Bienvenue sur Marmiplon,<br />le meilleur endroit pour trouver des recettes adaptées à tous les goûts</h1>
+      </div>
+      <section>
+        <h1 class="section-title">Que voulez-vous cuisiner ?</h1>
+        <div class="category-cards">
+          <% categoryList.forEach((category)=> { %>
+            <a href="../<%= category.id %>/recipes">
+              <div class="card">
+                <img src="/images/category-<%= category.id %>-card.png" alt="<%= category.name %>" />
+                <div class="cardContent">
+                  <h3>
+                    <%= category.name %>
+                  </h3>
+                  <span>
+                    <%= category.description %>
+                  </span>
+                </div>
+              </div>
+            </a>
+            <% }) %>
+        </div>
+      </section>
+    </main>
+    <%- include('../partials/footer') %>

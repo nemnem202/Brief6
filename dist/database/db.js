@@ -1,18 +1,7 @@
-import Express, { Router } from 'express';
-import path from 'node:path';
-
-class Controller {
-    constructor(request, response) {
-        this.request = request;
-        this.response = response;
-    }
-    respond() {
-        console.log("empty response sent");
-        this.response.send("empty response");
-    }
-}
-
-const categories = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Users = exports.recipeComments = exports.recipes = exports.recipeInstructions = exports.recipeIngredients = exports.ingredients = exports.categories = void 0;
+exports.categories = [
     {
         id: 1,
         name: "Entrées",
@@ -29,7 +18,7 @@ const categories = [
         description: "Des desserts sucrés pour terminer le repas sur une note agréable.",
     },
 ];
-const ingredients = [
+exports.ingredients = [
     { id: 1, name: "Pain" },
     { id: 2, name: "Tomates" },
     { id: 3, name: "Basilic" },
@@ -81,7 +70,7 @@ const ingredients = [
     { id: 49, name: "Coulis de fruits rouges" },
     { id: 50, name: "Citron" },
 ];
-const recipeIngredients = [
+exports.recipeIngredients = [
     // Bruschetta (101)
     { id: 1, quantity: 4, unit: "tranches", ingredientId: 1, recipeId: 101 },
     { id: 2, quantity: 2, unit: "grosses", ingredientId: 2, recipeId: 101 },
@@ -234,7 +223,7 @@ const recipeIngredients = [
     // Tarte au Citron Meringuée (308)
     { id: 114, quantity: 3, unit: "unités", ingredientId: 50, recipeId: 308 },
 ];
-const recipeInstructions = [
+exports.recipeInstructions = [
     // Bruschetta (101)
     {
         id: 1,
@@ -569,7 +558,7 @@ const recipeInstructions = [
         recipeId: 308,
     },
 ];
-const recipes = [
+exports.recipes = [
     // Entrées
     { id: 101, title: "Bruschetta", description: "Une entrée italienne classique." },
     { id: 102, title: "Salade Grecque", description: "Une salade fraîche et savoureuse." },
@@ -660,7 +649,7 @@ const recipes = [
         description: "L'équilibre parfait entre l'acidité du citron et la douceur de la meringue.",
     },
 ];
-const recipeComments = [
+exports.recipeComments = [
     {
         id: 1,
         username: "Alice",
@@ -2318,135 +2307,4 @@ const recipeComments = [
         recipeId: 101,
     },
 ];
-
-class RecipesController extends Controller {
-    readCategory() {
-        const id = parseInt(this.request.params.categoryId);
-        const selectedCategory = categories.find((category) => category.id === id);
-        if (selectedCategory === undefined) {
-            this.response.status(404).render("errors/404", {
-                title: "Catégorie introuvable",
-                description: "La catégorie recherchée n'existe pas.",
-            });
-            return;
-        }
-        const categoryRecipes = recipes.filter((r) => String(r.id)[0] === String(id));
-        const averageNotesArray = this.calculateAverageNoteForAll(categoryRecipes);
-        this.response.render("pages/category", {
-            category: selectedCategory,
-            recipes: categoryRecipes,
-            averageNotes: averageNotesArray,
-        });
-    }
-    calculateAverageNoteForAll(categoryRecipes) {
-        const averageNotesArray = categoryRecipes.map((recipe) => {
-            const comments = recipeComments.filter((comment) => comment.note && comment.recipeId === recipe.id);
-            if (comments.length === 0)
-                return 0;
-            const total = comments.reduce((sum, comment) => { var _a; return sum + ((_a = comment.note) !== null && _a !== void 0 ? _a : 0); }, 0);
-            return Math.round((total / comments.length) * 10) / 10;
-        });
-        return averageNotesArray;
-    }
-    readRecipe() {
-        const id = parseInt(this.request.params.id);
-        const requestedRecipe = recipes.find((recipe) => {
-            return recipe.id === id;
-        });
-        if (requestedRecipe === undefined) {
-            this.response.status(404).render("errors/404", {
-                title: "Recette introuvable",
-                description: "La recette recherchée n'existe pas.",
-            });
-            return;
-        }
-        const requestedRecipeIngredientDetails = recipeIngredients.filter((ingredient) => {
-            return ingredient.recipeId == id;
-        });
-        const requestedRecipeIngredientList = requestedRecipeIngredientDetails
-            .map((detail) => ingredients.find((currentIngredient) => currentIngredient.id === detail.ingredientId))
-            .filter((ingredient) => !!ingredient);
-        const requestedRecipeInsdtructions = recipeInstructions.filter((instruction) => instruction.recipeId === id);
-        const requestedRecipeComments = recipeComments.filter((comment) => comment.recipeId == id);
-        this.response.render("pages/recipe", {
-            recipe: requestedRecipe,
-            ingredients: requestedRecipeIngredientList,
-            ingredientDetails: requestedRecipeIngredientDetails,
-            instructions: requestedRecipeInsdtructions,
-            comments: requestedRecipeComments,
-        });
-    }
-    addComment() {
-        const comment = {
-            id: recipeComments.length + 1,
-            username: this.request.body.user,
-            content: this.request.body.message,
-            note: this.request.body.note,
-            createdAt: new Date(),
-            recipeId: this.request.body.id,
-        };
-        recipeComments.push(comment);
-        this.response.status(200).json(comment);
-    }
-    browseRecipeByName() {
-        const input = this.request.params.recipeName;
-        const splittedInput = decodeURIComponent(input).split(" ");
-        const validRecipes = recipes
-            .filter((r) => splittedInput.some((i) => r.title.toLowerCase().includes(i.toLowerCase()) && i.length > 3))
-            .sort((a, b) => {
-            // score maximum de lettres communes entre titre et n'importe quel mot saisi
-            const scoreA = Math.max(...splittedInput.map((i) => this.commonLettersCount(a.title, i)));
-            const scoreB = Math.max(...splittedInput.map((i) => this.commonLettersCount(b.title, i)));
-            return scoreB - scoreA; // tri décroissant
-        });
-        this.response.send(validRecipes);
-    }
-    commonLettersCount(str1, str2) {
-        const a = str1.toLowerCase();
-        const b = str2.toLowerCase();
-        let count = 0;
-        for (const char of a) {
-            if (b.includes(char)) {
-                count++;
-            }
-        }
-        return count;
-    }
-}
-
-class GeneralController extends Controller {
-    homePage() {
-        this.response.render("pages/home", { categoryList: categories });
-    }
-}
-
-const router = Router();
-router.get("/", (request, response) => {
-    new GeneralController(request, response).homePage();
-});
-router.get("/:categoryId/recipes", (request, response) => {
-    new RecipesController(request, response).readCategory();
-});
-router.get("/recipes/byId/:id", (request, response) => {
-    console.log(`Page for recipe with id ${request.params.id} requested by a user`);
-    new RecipesController(request, response).readRecipe();
-});
-router.post("/recipes/byId/:id", (request, response) => {
-    console.log(`Comment for recipe with id ${request.body.id} added by ${request.body.user}. 
-    Note : ${request.body.note}. Commentaire : ${request.body.message}`);
-    new RecipesController(request, response).addComment();
-});
-router.get("/recipes/byName/:recipeName", (request, response) => {
-    console.log(`Page de la recette ${request.params.recipeName} requested by a user`);
-    new RecipesController(request, response).browseRecipeByName();
-});
-
-const app = Express();
-app.set("view engine", "ejs");
-app.use(Express.json());
-app.set("views", path.join(__dirname, "views"));
-app.use(Express.static(path.join(__dirname, "public")));
-app.use(router);
-
-export { app as default };
-//# sourceMappingURL=app.js.map
+exports.Users = [];
