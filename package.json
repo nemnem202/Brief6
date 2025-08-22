@@ -8,12 +8,11 @@
     "dev:server": "tsx watch src/app.ts",
     "dev:css": "sass --watch src/stylesheets/style.scss:public/css/style.css",
     "dev:js": "rollup -c -w",
-    "build:server": "tsc",
     "build:css": "sass src/stylesheets/style.scss public/css/style.css",
     "build:js": "rollup -c",
-    "build": "npm run build:server && npm run build:css && npm run build:js && npm run copy:assets",
-    "copy:assets": "cpx \"src/views/**/*\" dist/views --verbose && cpx \"public/**/*\" dist/public",
-    "vercel-build": "npm run build"
+    "copy:assets": "cpx 'src/views/**/*' public/views --verbose && cpx 'public/**/*' public/public",
+    "build": "npm run build:css && npm run build:js && npm run copy:assets",
+    "start": "node src/app.ts"
   },
   "keywords": [],
   "author": "",
