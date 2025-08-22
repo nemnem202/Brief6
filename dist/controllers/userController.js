@@ -1,10 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-const tslib_1 = require("tslib");
-const Controller_1 = tslib_1.__importDefault(require("../libs/Controller"));
+const Controller_1 = __importDefault(require("../libs/Controller"));
 const fs_1 = require("fs");
-const path_1 = tslib_1.__importDefault(require("path"));
+const path_1 = __importDefault(require("path"));
 class UserController extends Controller_1.default {
     constructor() {
         super(...arguments);

@@ -1,6 +1,6 @@
 "use strict";
 const addCommentButton = document.getElementById("commentButton");
-addCommentButton === null || addCommentButton === void 0 ? void 0 : addCommentButton.addEventListener("click", addCommentForm);
+addCommentButton?.addEventListener("click", addCommentForm);
 function addCommentForm() {
     const main = document.querySelector("main");
     const formContainer = document.createElement("div");
@@ -41,5 +41,5 @@ function addCommentForm() {
     formButtonContainer.append(cancelButton, postCommentButton);
     commentForm.append(userLabel, userInput, userCommentLabel, userCommentInput, formButtonContainer);
     formContainer.append(commentForm);
-    main === null || main === void 0 ? void 0 : main.append(formContainer);
+    main?.append(formContainer);
 }

@@ -1,8 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecipesController = void 0;
-const tslib_1 = require("tslib");
-const Controller_1 = tslib_1.__importDefault(require("../libs/Controller"));
+const Controller_1 = __importDefault(require("../libs/Controller"));
 const db_1 = require("../database/db");
 class RecipesController extends Controller_1.default {
     readCategory() {
@@ -28,7 +30,7 @@ class RecipesController extends Controller_1.default {
             const comments = db_1.recipeComments.filter((comment) => comment.note && comment.recipeId === recipe.id);
             if (comments.length === 0)
                 return 0;
-            const total = comments.reduce((sum, comment) => { var _a; return sum + ((_a = comment.note) !== null && _a !== void 0 ? _a : 0); }, 0);
+            const total = comments.reduce((sum, comment) => sum + (comment.note ?? 0), 0);
             return Math.round((total / comments.length) * 10) / 10;
         });
         return averageNotesArray;
