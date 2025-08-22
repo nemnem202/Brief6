@@ -1,4 +1,4 @@
-import Controller from "../libs/Controller";
+import Controller from "../libs/Controller.js";
 import { promises as fs } from "fs";
 import path from "path";
 

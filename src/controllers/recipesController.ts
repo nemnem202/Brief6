@@ -1,4 +1,4 @@
-import Controller from "../libs/Controller";
+import Controller from "../libs/Controller.js";
 import {
   recipes,
   categories,
@@ -6,7 +6,7 @@ import {
   recipeIngredients,
   recipeInstructions,
   recipeComments,
-} from "../database/db";
+} from "../database/db.js";
 import {
   Category,
   Ingredient,
@@ -14,7 +14,7 @@ import {
   RecipeComment,
   RecipeIngredient,
   RecipeInstruction,
-} from "../database/types";
+} from "../database/types.js";
 
 export class RecipesController extends Controller {
   public readCategory() {
