@@ -10,7 +10,7 @@
     "dev:js": "rollup -c -w",
     "build": "npm run build:js && npm run build:css",
     "build:js": "rollup -c",
-    "build:css": "sass src/style.scss public/css/style.css",
+    "build:css": "sass src/stylesheets/style.scss public/css/style.css",
     "vercel-build": "npm run build"
   },
   "keywords": [],
